@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.sboard.BoardMapper">
+	<insert id="insBoard" parameterType="BoardEntity">
+		INSERT INTO t_board
+		( title, ctnt )
+		VALUES
+		( #{title}, #{ctnt} )
+	</insert>
+	
+	<select id="selBoardList" resultType="BoardEntity">
+		SELECT i_board, title, r_dt FROM t_board
+		ORDER BY i_board DESC
+	</select>
+	
+	<select id="selBoard" resultType="BoardEntity">
+		SELECT i_board, title, ctnt, r_dt FROM t_board
+		WHERE i_board = #{i_board}
+	</select>
+	
+	<update id="updBoard">
+		UPDATE t_board
+		SET title = #{title}
+		, ctnt = #{ctnt}
+		WHERE i_board = ${i_board}
+	</update>
+	
+	<delete id="delBoard">
+		DELETE FROM t_board
+		WHERE i_board = ${i_board}
+	</delete>
+	
+</mapper>  
+
+
+
+
+
+
+
+
+
+
+
+
